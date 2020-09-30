@@ -3,7 +3,12 @@ import { Title, Subtitle, Link } from '@components/title/style-title';
 
 export const TitleComponent = props => {
     return (
-        <Title inputColor={props.inputColor}>{props.text}</Title>
+        <Title 
+            inputColor={props.inputColor} 
+            fontWeight={props.fontWeight}
+        >
+            {props.text}
+        </Title>
     )
 }
 

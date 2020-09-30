@@ -7,6 +7,7 @@ import { TitleComponent, SubtitleComponent } from '@components/title/title';
 import { ButtonSmallComponent } from '@components/custom-buttons/custom-buttons';
 import { TextInputBoxComponent, TextInputBoxAreaComponent } from '@components/text-input/text-input';
 import { TitleBarWrapper, ChannelImageWrapper, TextInputBoxWrapper, TextInputBoxWrapperLarge, ButtonWrapper, ImageInput, ImageTouchable, DefaultImage } from '@containers/onboard/style-onboard';
+import { Image } from 'react-native';
 
 const onboard = ({navigation}) => {
     
@@ -46,7 +47,15 @@ const onboard = ({navigation}) => {
                     <ImageTouchable onPress={selectImage}>
                     {
                         avatarSource ? 
-                        <ImageInput source={{uri:avatarSource}}/> :
+                        <Image 
+                            source={{uri:avatarSource}} 
+                            style={{
+                                width:150, 
+                                height:150, 
+                                borderRadius:5, 
+                                resizeMode:'cover'
+                            }}
+                        /> :
                         <DefaultImage source={imageDefault}/>
                     }
                 </ImageTouchable>

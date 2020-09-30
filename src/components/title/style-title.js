@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Title = styled.Text`
     font-size: 26px;
-    font-weight: 700;
+    font-weight: ${props => props.fontWeight || 700 };
     color: ${props => props.inputColor || "#FFA000"};
 `;
 
