@@ -6,11 +6,11 @@ export const TitleBarWrapper = styled.View`
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    background-color: white;
+    background-color: #121C2F;
 `
 
 export const ProductsWrapper = styled.View`
-    background-color: yellow;
+    background-color: #121C2F;
     flex: 6;
-    padding-bottom: 20px;
+    padding-bottom: 19px;
 `

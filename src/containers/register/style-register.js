@@ -6,6 +6,7 @@ export const TitleWrapper = styled.View`
 `
 
 export const TextInputBoxWrapper = styled.View`
+    width: 80%;
     margin: 10px auto 5px auto;
 `
 

@@ -17,3 +17,12 @@ export const Link = styled.Text`
     border-bottom-width: 1px;
     border-bottom-color: ${props => props.inputColor || "white"};
 `;
+
+export const TitleBarWrapper = styled.View`
+    height: 80px;
+    padding-horizontal: 20px;
+    align-items: center;
+    flex-direction: row;
+    background-color: #121C2F;
+    justify-content: ${props => props.justifyContent || 'null'};
+`;

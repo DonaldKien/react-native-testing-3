@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import { TitleComponent } from '@components/title/title';
-import { TitleBarWrapper, StreamWrapper, DashboardWrapper } from '@containers/home-seller-dashboard/style-home-seller-dashboard';
+import { StreamWrapper, DashboardWrapper } from '@containers/home-seller-dashboard/style-home-seller-dashboard';
 import { BackgroundColor } from '@common/styling';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList } from 'react-native';
 import { ListItemSmall } from '@components/list-items/list-items';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { AppBarAdd } from '@components/app-bar/app-bar';
 
 const Home = () => {
 
@@ -20,16 +20,11 @@ const Home = () => {
         <Fragment>
             <BackgroundColor>
 
-                <TitleBarWrapper>
-                    <TitleComponent 
-                        text='Home'
-                    />
-                    <Icon 
-                        name="plus-circle" 
-                        size={30} 
-                        color='#FFA000'
-                    />
-                </TitleBarWrapper>
+                <AppBarAdd
+                    text='Home'
+                    fontWeight="700"
+                    onPress={() => console.log('Home add')} 
+                />
 
                 <StreamWrapper>
                     <TitleComponent 

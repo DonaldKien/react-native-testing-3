@@ -18,7 +18,7 @@ export const ListItemSmallDateFont = styled.Text`
     font-weight: 700;
 `
 export const ListItemBigStyle = styled.View`
-    background-color: blue;
+    background-color: white;
     flex-direction: row;
     margin-vertical: 10px;
     margin-horizontal: 15px;
@@ -28,17 +28,31 @@ export const ListItemBigStyle = styled.View`
 `
 
 export const ProductImage = styled.Image`
-    width: 150px;
+    width: 50%;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     resize-mode: cover;
 `
 
 export const ListItemBigDetails = styled.View`
-    padding-vertical: 10px;
-    padding-horizontal: 20px;
+    background-color: white;
+    width: 50%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-horizontal: 10px;
+    padding-vertical: 5px;
 `
 
 export const ProductName = styled.Text`
-    font-size: 30px;
+    font-size: 25px;
+    font-weight: 700;
+`
+
+export const Price = styled.Text`
+    font-size: 23px;
+    font-weight: 600;
+`
+
+export const ListItemBigBoxSized = styled.View`
+    height: 10px;
 `

@@ -14,15 +14,15 @@ export const ChannelImageWrapper = styled.View`
     align-items: center;
 `
 export const TextInputBoxWrapper = styled.View`
-    margin-top: 15px;   
+    margin: 15px auto 0px auto;
     flex: 1;
-    align-items: center;
+    width: 90%;
 `
 
 export const TextInputBoxWrapperLarge = styled.View`
-    margin-top: 15px;   
+    margin: 15px auto 0px auto;
     flex: 2;
-    align-items: center;
+    width: 90%;
 `
 
 export const ButtonWrapper = styled.View`
@@ -38,6 +38,7 @@ export const ImageTouchable = styled.TouchableOpacity`
     border-radius: 10px;
     background-color: white;
 `
+
 export const ImageInput = styled.Image`
     width: 150;
     height: 150;

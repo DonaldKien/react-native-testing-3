@@ -1,4 +1,5 @@
 import React, {useState, Fragment} from 'react';
+import { Content } from 'native-base';
 import { BackgroundColor } from '@common/styling';
 import { ButtonComponent } from '@components/custom-buttons/custom-buttons';
 import { TextInputBoxComponent } from '@components/text-input/text-input';
@@ -19,47 +20,50 @@ const register = ({ navigation }) => {
     ])
 
     const labels = [
-        {key:1, inputLabel: 'Email'},
-        {key:2, inputLabel: 'Name of Person in Charge'},
-        {key:3, inputLabel: 'Mobile'},
-        {key:4, inputLabel: 'Password'},
-        {key:5, inputLabel: 'Confirm Password'}
+        {key:1, inputLabel: 'Email', secureTextEntry: false, keyboardType: "email-address"},
+        {key:2, inputLabel: 'Name of Person in Charge', secureTextEntry: false, keyboardType: "default"},
+        {key:3, inputLabel: 'Mobile', secureTextEntry: false, keyboardType: "phone-pad"},
+        {key:4, inputLabel: 'Password', secureTextEntry: true, keyboardType: "default"},
+        {key:5, inputLabel: 'Confirm Password',  secureTextEntry: true, keyboardType: "default"}
     ];
 
     return (
         <Fragment>
-        <BackgroundColor>
+            <BackgroundColor>
+                <Content>
+                    <TitleWrapper>
+                        <TitleComponent 
+                            text='Sign Up as Seller'
+                        />
+                    </TitleWrapper>
 
-            <TitleWrapper>
-                <TitleComponent 
-                    text='Sign Up as Seller'
-                />
-            </TitleWrapper>
+                    {labels.map( label => ( 
+                    <TextInputBoxWrapper key={label.key}>
+                        <TextInputBoxComponent 
+                            text={label.inputLabel}
+                            secureTextEntry={label.secureTextEntry}
+                            keyboardType={label.keyboardType}
+                        />
+                    </TextInputBoxWrapper>
+                    ))}
 
-            {labels.map( label => ( 
-            <TextInputBoxWrapper key={label.key}>
-                <TextInputBoxComponent 
-                    text={label.inputLabel}
-                />
-            </TextInputBoxWrapper>
-            ))}
+                    <LinkWrapper>
+                        <LinkComponent 
+                            text='Terms and Conditions'
+                            inputColor="#FFA000"
+                            onPress={termsAndConditions}
+                        />
+                    </LinkWrapper>
 
-            <LinkWrapper>
-                <LinkComponent 
-                    text='Terms and Conditions'
-                    inputColor="#FFA000"
-                    onPress={termsAndConditions}
-                />
-            </LinkWrapper>
-
-            <ButtonWrapper>
-                <ButtonComponent 
-                    text='Register'
-                    inputColor='yellow'
-                    onPress={() => navigation.navigate('Onboard')}
-                />
-            </ButtonWrapper>
-        </BackgroundColor>
+                    <ButtonWrapper>
+                        <ButtonComponent 
+                            text='Register'
+                            inputColor='yellow'
+                            onPress={() => navigation.navigate('Onboard')}
+                        />
+                    </ButtonWrapper>
+                </Content>
+            </BackgroundColor>
         </Fragment>
     )
 }

@@ -12,7 +12,9 @@ export const ButtonComponent = props => {
 
 export const ButtonSmallComponent = props => {
     return (
-        <ButtonClick2 onPress={props.onPress}>
+        <ButtonClick2 
+            onPress={props.onPress} 
+            inputColor={props.inputColor}>
             <ButtonText>{props.text}</ButtonText>
         </ButtonClick2>
     )

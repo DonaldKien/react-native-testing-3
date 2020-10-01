@@ -12,7 +12,18 @@ import Product from '@containers/products/products';
 import Messages from '@containers/messages/messages';
 import Orders from '@containers/orders/orders';
 import Settings from '@containers/settings/settings';
+import ProductDetails from '@containers/product-details/product-details';
 
+const Stack = createStackNavigator();
+
+const ProductsTab = () => {
+    return (
+        <Stack.Navigator initialRouteName="Products" screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Products" component={Product} />
+            <Stack.Screen name="ProductDetails" component={ProductDetails} />
+        </Stack.Navigator>
+    )
+}
 
 const Tab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
@@ -42,13 +53,12 @@ const BottomTabNavigator = () => {
             />
             <Tab.Screen 
                 name="Products" 
-                component={Product} 
+                component={ProductsTab} 
                 options={{
                     tabBarLabel: "Products", 
                     tabBarIcon: ({ color }) => (<Icon name="align-justify" color={color} size={30}/>) 
                 }}
             />
-
             <Tab.Screen 
                 name="Orders" 
                 component={Orders} 
@@ -69,7 +79,6 @@ const BottomTabNavigator = () => {
     );
 };
 
-const Stack = createStackNavigator();
 function Navigation() {
 	return (
 		<NavigationContainer>
