@@ -13,6 +13,7 @@ import Messages from '@containers/messages/messages';
 import Orders from '@containers/orders/orders';
 import Settings from '@containers/settings/settings';
 import ProductDetails from '@containers/product-details/product-details';
+import TermsAndConditions from '@containers/terms-and-conditions/terms-and-conditions';
 
 const Stack = createStackNavigator();
 
@@ -86,6 +87,7 @@ function Navigation() {
                 <Stack.Screen name="SPLASH" component={Splash} />
                 <Stack.Screen name="Landing" component={Landing} />
                 <Stack.Screen name="Register" component={Register} />
+                <Stack.Screen name="TermsAndConditions" component={TermsAndConditions}/>
                 <Stack.Screen name="Onboard" component={Onboard} />
                 <Stack.Screen name="BottomTab" component={BottomTabNavigator} />
             </Stack.Navigator>

@@ -9,7 +9,7 @@ import { TitleWrapper, TextInputBoxWrapper, LinkWrapper, ButtonWrapper } from '@
 
 const register = ({ navigation }) => {
 
-    const termsAndConditions = () => {console.log('terms and conditions')}
+    const termsAndConditions = () => {navigation.navigate('TermsAndConditions')}
 
     const [form, setForm] = useState([
         {email: ""},

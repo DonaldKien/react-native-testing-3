@@ -6,7 +6,7 @@ import { AppBarBack } from '@components/app-bar/app-bar';
 import { ProductInput } from '@components/image-input/image-input';
 import { TextInputBoxComponent, TextInputBoxAreaComponent } from '@components/text-input/text-input';
 import { ButtonSmallComponent } from '@components/custom-buttons/custom-buttons';
-import { onChange } from 'react-native-reanimated';
+// import { connect } from 'react-redux';
 
 const ProductDetails = (props) => {
 
@@ -35,6 +35,7 @@ const ProductDetails = (props) => {
 
                 <AppBarBack 
                     onPress={() => props.navigation.pop()}
+                    text="Add Product"
                 />
 
                 <ChannelImageWrapper>
@@ -45,6 +46,7 @@ const ProductDetails = (props) => {
                     <TextInputBoxComponent 
                         text='Product Name'
                         onChangeText={(text) => onChangeText('name', text)}
+                        value={productForm.name.value}
                     />
                     <InputSizedBox />
                     <TextInputBoxAreaComponent 
@@ -52,21 +54,25 @@ const ProductDetails = (props) => {
                         multiline={true} 
                         numberOfLines={2}
                         onChangeText={(text) => onChangeText('description', text)}
+                        value={productForm.description.value}
                     />
                     <InputSizedBox />
                     <TextInputBoxComponent 
                         text='Price per unit (RM)'
                         onChangeText={(text) => onChangeText('price', text)}
+                        value={productForm.price.value}
                     />
                     <InputSizedBox />
-                    <TextInputBoxComponent 
+                    <TextInputBoxComponent
                         text='Min Order, unit'
                         onChangeText={(text) => onChangeText('units', text)}
+                        value={productForm.units.value}
                     />
                     <InputSizedBox />
                     <TextInputBoxComponent 
                         text='Available Quantity'
                         onChangeText={(text) => onChangeText('quantity', text)}
+                        value={productForm.quantity.value}
                     />
                     <InputSizedBox />
                     <CreateButtonWrapper>
@@ -86,6 +92,16 @@ const ProductDetails = (props) => {
     )
 }
 
-
-
 export default ProductDetails;
+
+// const mapStateToProps = (state) => {
+//     return {}
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+
+//     }
+// }
+
+// export default connect (mapStateToProps, mapDispatchToProps) (ProductDetails);

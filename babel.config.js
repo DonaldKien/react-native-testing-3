@@ -9,7 +9,8 @@ module.exports = {
         "@redux": "./src/redux",
         "@routing": "./src/routing",
         "@common": "./src/common",
-        "@assets": "./src/assets"
+        "@assets": "./src/assets",
+        "@redux": "./src/redux"
       }
     }]
   ]

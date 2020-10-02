@@ -23,7 +23,7 @@ const Products = ({navigation}) => {
             <BackgroundColor>
                 
                 <AppBarAdd
-                    text='Add Product'
+                    text='Products'
                     fontWeight="600"
                     onPress={() => navigation.navigate("ProductDetails")} 
                 />

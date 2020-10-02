@@ -19,6 +19,7 @@ export const Link = styled.Text`
 `;
 
 export const TitleBarWrapper = styled.View`
+    width: 100%;
     height: 80px;
     padding-horizontal: 20px;
     align-items: center;

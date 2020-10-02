@@ -34,7 +34,7 @@ export const AppBarBack = props => {
                 />
             </AppBarIconTouch>
             <TitleComponent 
-                text="Add Product"
+                text={props.text}
                 fontWeight="600"
             />
         </TitleBarWrapper>

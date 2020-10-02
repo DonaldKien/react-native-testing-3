@@ -46,24 +46,30 @@ const landing = ({navigation}) => {
             }
         })
     }
-
+    
     const signIn = () => {
+        let email = form.email.value;
+        let emailRegex = /^[\w\W]+\@[a-zA-Z0-9]+\.com/i;
+        let checkEmail = emailRegex.test(email);
+
+        let password = form.password.value;
+        let passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,12})/g;
+        let checkPassword = passwordRegex.test(password);
         setForm({
             ['email']: {
                 ...form['email'],
-                error: form['email'].value ? false : true
+                error: !checkEmail
             },
             ['password']: {
                 ...form['password'],
-                error: form['password'].value ? false : true
+                error: !checkPassword
             }
         })
         // console.log('email: ' + form.email.value + '| password: ' + form.password.value);
-        // console.log('email error: ' + form.email.error + '| password error: ' + form.password.error);
-        // setTimeout(function(){ console.log('email error: ' + form.email.error + '| password error: ' + form.password.error); }, 3000);
-        // if (!form.email.error && !form.password.error) {
-        //     navigation.navigate('BottomTab')
-        // }
+        // console.log('email error: ' + form.email.error + '| password error: ' + form.password.error + "|" + checkPassword);
+        if (checkEmail && checkPassword) {
+            navigation.navigate('BottomTab')
+        }
     }
 
     return (
