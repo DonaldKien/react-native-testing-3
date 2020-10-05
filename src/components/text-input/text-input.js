@@ -27,6 +27,8 @@ export const TextInputBoxAreaComponent = props => {
                 <InputText 
                     multiline={props.multiline} 
                     numberOfLines={props.numberOfLines}
+                    onChangeText={props.onChangeText}
+                    value={props.value}
                 />
         </TextInputBoxLarge>
     )

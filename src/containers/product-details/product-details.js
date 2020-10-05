@@ -6,16 +6,18 @@ import { AppBarBack } from '@components/app-bar/app-bar';
 import { ProductInput } from '@components/image-input/image-input';
 import { TextInputBoxComponent, TextInputBoxAreaComponent } from '@components/text-input/text-input';
 import { ButtonSmallComponent } from '@components/custom-buttons/custom-buttons';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 const ProductDetails = (props) => {
+    const { navigation, createProduct, allProducts } = props;
 
     const [productForm, setProductForm] = useState({
         name: { value: "" },
         description: { value: "" },
         price: { value: "" },
         units: { value: "" },
-        quantity: { value: "" }
+        quantity: { value: "" },
+        image: { value: 'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1' }
     })
 
     const onChangeText = (name, value) => {
@@ -27,6 +29,16 @@ const ProductDetails = (props) => {
             }
         })
     }
+
+    const createButton = () => {
+        createProduct(productForm);
+        // console.log(allProducts);
+        console.log("===================================================")
+        console.log(productForm);
+        navigation.pop();
+    }
+
+
 
     return (
         <Fragment>
@@ -79,6 +91,7 @@ const ProductDetails = (props) => {
                         <ButtonSmallComponent 
                             text="Create"
                             inputColor="yellow"
+                            onPress={createButton}
                         />
                     </CreateButtonWrapper>
 
@@ -92,16 +105,18 @@ const ProductDetails = (props) => {
     )
 }
 
-export default ProductDetails;
+// export default ProductDetails;
 
-// const mapStateToProps = (state) => {
-//     return {}
-// }
+const mapStateToProps = (state) => {
+    return {
+        allProducts: state.allProducts
+    }
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createProduct: (create) => dispatch({type:"CREATE_PRODUCT", create})
+    }
+}
 
-//     }
-// }
-
-// export default connect (mapStateToProps, mapDispatchToProps) (ProductDetails);
+export default connect (mapStateToProps, mapDispatchToProps) (ProductDetails);
