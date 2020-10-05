@@ -8,7 +8,7 @@ const reducer = (state= initialState, action) => {
     switch (action.type) {
         case 'CREATE_PRODUCT':
             const newProduct = {
-                id: number++,
+                id: { value: action.create.id.value },
                 name: { value: action.create.name.value },
                 image: { value: action.create.image.value },
                 description: { value: action.create.description.value },
@@ -18,6 +18,10 @@ const reducer = (state= initialState, action) => {
             };
             const allProducts = [...state.allProducts, newProduct];
             return {allProducts: allProducts};
+        case 'DELETE_PRODUCT':
+            return {
+                allProducts: state.allProducts.filter((product) => product.id !== action.itemId )
+            }
         default:
             return state;
     }

@@ -1,6 +1,6 @@
 import React, {useState, Fragment} from 'react';
 import { ImageTouchable, DefaultImage } from '@containers/product-details/style-product-details';
-import { Image, StyleSheet, View, Text } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import imageDefault from '@assets/image/addImage.png';
 import { SubtitleComponent } from '@components/title/title';
 import ImagePicker from 'react-native-image-picker';

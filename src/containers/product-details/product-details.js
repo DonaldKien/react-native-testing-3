@@ -7,17 +7,15 @@ import { ProductInput } from '@components/image-input/image-input';
 import { TextInputBoxComponent, TextInputBoxAreaComponent } from '@components/text-input/text-input';
 import { ButtonSmallComponent } from '@components/custom-buttons/custom-buttons';
 import { connect } from 'react-redux';
-import { ImageTouchable, DefaultImage } from '@containers/product-details/style-product-details';
-import { Image, View, Text } from 'react-native';
-import imageDefault from '@assets/image/addImage.png';
-import { SubtitleComponent } from '@components/title/title';
 import ImagePicker from 'react-native-image-picker';
-
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 
 const ProductDetails = (props) => {
     const { navigation, createProduct, allProducts } = props;
 
     const [productForm, setProductForm] = useState({
+        id: { value: uuidv4() },
         name: { value: "" },
         description: { value: "" },
         price: { value: "" },

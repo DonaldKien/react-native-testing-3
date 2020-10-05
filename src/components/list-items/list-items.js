@@ -1,7 +1,8 @@
 import React from 'react';
 import { ButtonClick, ButtonText, ButtonClick2 } from '@components/custom-buttons/style-custom-buttons';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ListItemSmallStyle, ListItemSmallDate, ListItemSmallDateFont, ListItemBigStyle, ProductImage, ListItemBigDetails, ProductName, Price, ListItemBigBoxSized } from '@components/list-items/style-list-items';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const ListItemSmall = props => {
     return (
@@ -45,7 +46,22 @@ export const ListItemBig = props => {
                 <Text>Inventory</Text>
                 <Text>{props.inventory}</Text>
             </ListItemBigDetails>
+            <TouchableOpacity style={styles.minus} onPress={props.onPress}>
+                <Icon 
+                    name="minus-circle" 
+                    size={40} 
+                    color='red'
+                />
+            </TouchableOpacity>
         </ListItemBigStyle>
     )
 }
+
+const styles = StyleSheet.create({
+    minus: {
+        position: 'absolute',
+        flex: 1,
+        zIndex: 1
+    }
+})
 

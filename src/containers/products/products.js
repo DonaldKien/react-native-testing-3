@@ -12,13 +12,57 @@ import { connect } from 'react-redux';
 const Products = props => {
     const {navigation, allProducts} = props;
 
-    // const products = [
-    //     {key:'1', image:'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1', name:'Somersby Rose', min_order:'1', description:'12 x btls 335ml', price:'300', inventory:'300'},
-    //     {key:'2', image:'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1', name:'Somersby Rose', min_order:'2', description:'12 x btls 335ml', price:'300', inventory:'300'},
-    //     {key:'3', image:'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1', name:'Somersby Rose', min_order:'3', description:'12 x btls 335ml', price:'300', inventory:'300'},
-    //     {key:'4', image:'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1', name:'Somersby Rose', min_order:'4', description:'12 x btls 335ml', price:'300', inventory:'300'},
-    //     {key:'5', image:'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1', name:'Somersby Rose', min_order:'5', description:'12 x btls 335ml', price:'300', inventory:'300'},
-    // ]
+    const hardcode = [
+        {
+            id: 1,
+            name: { value: "Somersby Rose" },
+            description: { value: "12 x btls 335ml" },
+            price: { value: "300" },
+            units: { value: "2" },
+            quantity: { value: "500" },
+            image: { value: 'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1' }
+        },
+        {
+            id: 2,
+            name: { value: "Somersby Rose" },
+            description: { value: "12 x btls 335ml" },
+            price: { value: "300" },
+            units: { value: "2" },
+            quantity: { value: "500" },
+            image: { value: 'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1' }
+        },
+        {
+            id: 3,
+            name: { value: "Somersby Rose" },
+            description: { value: "12 x btls 335ml" },
+            price: { value: "300" },
+            units: { value: "2" },
+            quantity: { value: "500" },
+            image: { value: 'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1' }
+        },
+        {
+            id: 4,
+            name: { value: "Somersby Rose" },
+            description: { value: "12 x btls 335ml" },
+            price: { value: "300" },
+            units: { value: "2" },
+            quantity: { value: "500" },
+            image: { value: 'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1' }
+        },
+        {
+            id: 5,
+            name: { value: "Somersby Rose" },
+            description: { value: "12 x btls 335ml" },
+            price: { value: "300" },
+            units: { value: "2" },
+            quantity: { value: "500" },
+            image: { value: 'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1' }
+        },
+    ]
+
+    const deleteProduct = () => {
+        console.log('delete')
+    }
 
     return (
         <Fragment>
@@ -32,7 +76,8 @@ const Products = props => {
                 <ProductsWrapper>
                     <FlatList 
                     showsVerticalScrollIndicator={false}
-                    data={allProducts}
+                    // data={allProducts}
+                    data={hardcode}
                     keyExtractor={item => item.id.toString()}
                     renderItem={({item}) => (
                         <ListItemBig 
@@ -42,6 +87,7 @@ const Products = props => {
                             description={item.description.value}
                             price={item.price.value}
                             inventory={item.quantity.value}
+                            onPress={() => props.deleteProduct(item.id.value)}
                         />
                     )}
                     />
@@ -58,4 +104,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect (mapStateToProps) (Products);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteProduct: (itemId) => dispatch({type:'DELETE_PRODUCT', itemId})
+    }
+}
+
+export default connect (mapStateToProps, mapDispatchToProps) (Products);
