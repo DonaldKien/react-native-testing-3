@@ -7,6 +7,12 @@ import { ProductInput } from '@components/image-input/image-input';
 import { TextInputBoxComponent, TextInputBoxAreaComponent } from '@components/text-input/text-input';
 import { ButtonSmallComponent } from '@components/custom-buttons/custom-buttons';
 import { connect } from 'react-redux';
+import { ImageTouchable, DefaultImage } from '@containers/product-details/style-product-details';
+import { Image, View, Text } from 'react-native';
+import imageDefault from '@assets/image/addImage.png';
+import { SubtitleComponent } from '@components/title/title';
+import ImagePicker from 'react-native-image-picker';
+
 
 const ProductDetails = (props) => {
     const { navigation, createProduct, allProducts } = props;
@@ -17,28 +23,39 @@ const ProductDetails = (props) => {
         price: { value: "" },
         units: { value: "" },
         quantity: { value: "" },
-        image: { value: 'https://i2.wp.com/nlliquor.com/wp-content/uploads/2020/05/13593_m_v2.jpg?fit=960%2C1280&ssl=1' }
+        image: { value: null }
     })
 
     const onChangeText = (name, value) => {
         setProductForm({
             ...productForm,
             [name]: {
-                ...productForm[name],
                 value: value
             }
         })
     }
 
-    const createButton = () => {
-        createProduct(productForm);
-        // console.log(allProducts);
-        console.log("===================================================")
-        console.log(productForm);
-        navigation.pop();
+	const selectImage = async() => {
+		ImagePicker.showImagePicker({noData: true, mediaType: 'photo'}, (response) => {
+			if (response.didCancel) {
+				console.log('User cancelled image picker');
+			} else if (response.error) {
+				console.log('ImagePicker Error: ', response.error);
+			} else if (response.customButton) {
+				console.log('User tapped custom button: ', response.customButton);
+			} else {
+				setProductForm({
+                    ...productForm,
+                    image: {value: response.uri}
+                })			
+			}
+		});
     }
 
-
+    const createButton = () => {
+        createProduct(productForm);
+        navigation.pop();
+    }
 
     return (
         <Fragment>
@@ -51,7 +68,10 @@ const ProductDetails = (props) => {
                 />
 
                 <ChannelImageWrapper>
-                    <ProductInput />
+                    <ProductInput 
+                        onPress={selectImage}
+                        source={{uri:productForm.image.value}}
+                    />
                 </ChannelImageWrapper>
 
                 <ProductInputGroup>
